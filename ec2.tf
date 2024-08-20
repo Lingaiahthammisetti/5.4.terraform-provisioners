@@ -1,5 +1,3 @@
-
-
 # Example-1
 # resource "aws_instance" "workspace" {
 #   ami           = "ami-041e2ea9402c46c32"
@@ -27,7 +25,6 @@
 #     command = "ansible-playbook -i private_ips.txt web.yaml" #self is aws_instance.web
 #   }
 # }
-
 
 #Example-3
 resource "aws_instance" "workspace" {
@@ -59,9 +56,4 @@ resource "aws_instance" "workspace" {
       "sudo systemctl start nginx",
     ]
   }
-
-
-
-
-
 }
