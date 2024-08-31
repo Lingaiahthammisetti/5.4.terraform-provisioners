@@ -1,18 +1,20 @@
-# Example-1
+# #Example-1
 # resource "aws_instance" "workspace" {
 #   ami           = "ami-041e2ea9402c46c32"
-#   vpc_security_group_ids = ["sg-0b35c64f66b53871f"]
+#   vpc_security_group_ids = ["sg-0b8c28fdd8f99cc89"]
 #   instance_type = "t3.micro"
   
 #    provisioner "local-exec" {
 #     command = "echo ${self.private_ip} >> private_ips.txt" #self is aws_instance.web
 #   }
+#    tags = {
+#     Name = "Terraform Provisioner - EC2" #Here 'Helloworld-db' is the ec2-instance name in AWS, not related to Terrafrom.
+#   }
 # }
-
 # #Example-2
 # resource "aws_instance" "workspace" {
 #   ami           = "ami-041e2ea9402c46c32"
-#   vpc_security_group_ids = ["sg-0b35c64f66b53871f"]
+#   vpc_security_group_ids = ["sg-0b8c28fdd8f99cc89"]
 #   instance_type = "t3.micro"
   
 #   #provisioners will run when you are creating resource. 
@@ -20,16 +22,19 @@
 #    provisioner "local-exec" {
 #     command = "echo ${self.private_ip} >> private_ips.txt" #self is aws_instance.web
 #   }
-    
 #    provisioner "local-exec" {
 #     command = "ansible-playbook -i private_ips.txt web.yaml" #self is aws_instance.web
 #   }
+#     tags = {
+#     Name = "Terraform Provisioner - EC2" #Here 'Helloworld-db' is the ec2-instance name in AWS, not related to Terrafrom.
+#   }
 # }
+#Note: This will not work here. For this, First we need to create ec2-instance and install terraform, ansible then clone the code, run it. Then you can try it again.
 
 #Example-3
 resource "aws_instance" "workspace" {
   ami           = "ami-041e2ea9402c46c32"
-  vpc_security_group_ids = ["sg-0b35c64f66b53871f"]
+  vpc_security_group_ids = ["sg-0b8c28fdd8f99cc89"]
   instance_type = "t3.micro"
   
   #provisioners will run when you are creating resource. 
@@ -37,10 +42,6 @@ resource "aws_instance" "workspace" {
    provisioner "local-exec" {
     command = "echo ${self.private_ip} >> private_ips.txt" #self is aws_instance.web
   }
-    
-  #  provisioner "local-exec" {
-  #   command = "ansible-playbook -i private_ips.txt web.yaml" #self is aws_instance.web
-  # }
 
     connection {
     type     = "ssh"
@@ -55,5 +56,8 @@ resource "aws_instance" "workspace" {
       "sudo dnf install nginx -y",
       "sudo systemctl start nginx",
     ]
+  }
+   tags = {
+    Name = "Terraform Provisioner - EC2" #Here 'Helloworld-db' is the ec2-instance name in AWS, not related to Terrafrom.
   }
 }
