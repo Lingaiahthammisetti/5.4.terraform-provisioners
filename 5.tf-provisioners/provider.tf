@@ -7,7 +7,7 @@ terraform {
   }
   backend "s3" {
     bucket ="lingadevops-remote-state"
-    key = "workspace"
+    key = "tf-provisioners"
     region = "us-east-1"
     dynamodb_table="lingadevops-locking"
   }
