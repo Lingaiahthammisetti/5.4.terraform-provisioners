@@ -5,11 +5,11 @@ terraform {
       version = "5.58.0"
     }
   }
-  backend "s3" {
-    bucket ="lingadevops-remote-state"
-    key = "tf-provisioners"
-    region = "us-east-1"
-    dynamodb_table="lingadevops-locking"
+backend "s3" {
+  bucket ="tf-provisioners-remote-state"
+  key="tf-provisioners-key"
+  region="us-east-1"
+  dynamodb_table="tf-provisioners-remote-state-locking"
   }
 }
 provider "aws" {

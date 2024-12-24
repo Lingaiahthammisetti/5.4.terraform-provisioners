@@ -34,7 +34,7 @@
 #Example-3
 resource "aws_instance" "tf-provisioner_ec2" {
   ami           = "ami-09c813fb71547fc4f" 
-  vpc_security_group_ids = ["sg-0ccccafe3d4f0719e"]
+  vpc_security_group_ids = ["sg-06b1b57b365846051"]
   instance_type = "t3.micro"
   
   #provisioners will run when you are creating resource. 

@@ -6,10 +6,10 @@ terraform {
     }
   }
   backend "s3" {
-    bucket ="lingadevops-remote-state"
+    bucket ="lingadevops-local-remote-state"
     key = "local-remote-provisioner"
     region = "us-east-1"
-    dynamodb_table="lingadevops-locking"
+    dynamodb_table="lingadevops-local-remote-state-locking"
   }
 }
 provider "aws" {
