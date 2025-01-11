@@ -1,7 +1,5 @@
-
-
 resource "aws_instance" "remote-exec-provisioner-ec2" {
- ami           = "ami-09c813fb71547fc4f" 
+  ami           = "ami-09c813fb71547fc4f" 
   vpc_security_group_ids = ["sg-06b1b57b365846051"]
   instance_type = "t3.micro"
 
