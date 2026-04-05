@@ -6,14 +6,14 @@ terraform {
     }
   }
 backend "s3" {
-  bucket ="tf-provisioners-remote-state"
-  key="tf-provisioners-key"
-  region="us-east-1"
-  dynamodb_table="tf-provisioners-remote-state-locking"
+  bucket = "docker1-remote-state"
+  key = "remote-state"
+  region = "us-east-1"
+  dynamodb_table = "docker1-locking"
   }
 }
 provider "aws" {
   # Configuration options
   region = "us-east-1"
+  
 }
-
